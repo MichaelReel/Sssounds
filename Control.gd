@@ -28,7 +28,8 @@ func _fill_buffer():
 	var to_fill = playback.get_frames_available()
 	while to_fill > 0:
 		playback.push_frame(
-			Vector2(1.0,1.0) * sin(phase * (PI * 2.0))
+			Vector2.ONE * randf()
+#			Vector2(1.0,1.0) * sin(phase * (PI * 2.0))
 		)
 		phase = fmod((phase + increment), 1.0)
 		to_fill -= 1
