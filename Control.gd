@@ -1,8 +1,9 @@
 extends Control
 
 var hz : float = 440
-var pulse_hz : float = 44100
+var sample_hz : float = 22050
 var phase : float = 0
+
 var playback : AudioStreamPlayback
 
 onready var player := $AudioStreamPlayer
@@ -23,7 +24,7 @@ func _process(delta : float):
 		_fill_buffer()
 	
 func _fill_buffer():
-	var increment = (1.0 / (hz / pulse_hz))
+	var increment = hz / sample_hz
 	var to_fill = playback.get_frames_available()
 	while to_fill > 0:
 		playback.push_frame(
