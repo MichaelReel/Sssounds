@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Control.gd" type="Script" id=1]
+[ext_resource path="res://AudioStreamPlayer.gd" type="Script" id=2]
 
 [sub_resource type="AudioStreamGenerator" id=1]
 buffer_length = 1.0
@@ -24,7 +25,12 @@ __meta__ = {
 margin_right = 24.0
 margin_bottom = 24.0
 text = "Playing"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 1 )
+bus = "Noise Bus"
+script = ExtResource( 2 )
 [connection signal="toggled" from="Panel/CheckBox" to="." method="_on_CheckBox_toggled"]
