@@ -15,16 +15,66 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-margin_right = 128.0
-margin_bottom = 75.0
+margin_right = 256.0
+margin_bottom = 150.0
+rect_scale = Vector2( 4, 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CheckBox" type="CheckBox" parent="Panel"]
-margin_right = 24.0
-margin_bottom = 24.0
-text = "Playing"
+margin_left = 5.5
+margin_top = 25.5
+margin_right = 59.5
+margin_bottom = 49.5
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClipSelect" type="HSlider" parent="Panel"]
+margin_left = 60.25
+margin_top = 52.5
+margin_right = 246.25
+margin_bottom = 75.5
+min_value = 10.0
+max_value = 10000.0
+value = 1000.0
+tick_count = 10
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/ClipSelect"]
+margin_left = -45.625
+margin_top = 4.5
+margin_right = -5.625
+margin_bottom = 18.5
+text = "Cutoff"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume" type="HSlider" parent="Panel"]
+margin_left = 60.25
+margin_top = 82.25
+margin_right = 246.25
+margin_bottom = 105.25
+min_value = -50.0
+max_value = 0.0
+tick_count = 10
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/Volume"]
+margin_left = -53.375
+margin_top = 4.25
+margin_right = -4.375
+margin_bottom = 18.25
+text = "Volume"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -34,3 +84,5 @@ stream = SubResource( 1 )
 bus = "Noise Bus"
 script = ExtResource( 2 )
 [connection signal="toggled" from="Panel/CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="value_changed" from="Panel/ClipSelect" to="." method="_on_ClipSelect_value_changed"]
+[connection signal="value_changed" from="Panel/Volume" to="." method="_on_Volume_value_changed"]
